@@ -1,6 +1,6 @@
 package com.puvar.cloudservice.service.feign;
 
-import com.puvar.helloserviceapi.domain.UserApi;
+import com.puvar.cloudserviceapi.domain.UserApi;
 
 /***
  * MqServerInterface接口服务降级

@@ -1,6 +1,6 @@
 package com.puvar.cloudservice.service.feign;
 
-import com.puvar.helloserviceapi.MqServerExternalInterface.ExternalInterfaceApi;
+import com.puvar.cloudserviceapi.MqServerExternalInterface.ExternalInterfaceApi;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 

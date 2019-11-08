@@ -4,7 +4,7 @@ import com.puvar.cloudcommon.common.constants.PlainResponse;
 import com.puvar.cloudservice.domain.User;
 import com.puvar.cloudservice.service.springcloud.HelloService;
 import com.puvar.cloudservice.service.feign.MqServerInterface;
-import com.puvar.helloserviceapi.domain.UserApi;
+import com.puvar.cloudserviceapi.domain.UserApi;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -1,8 +1,8 @@
 /*
 package com.puvar.cloudservice.controller;
 
-import com.puvar.helloserviceapi.domain.UserApi;
-import com.puvar.helloserviceapi.MqServerExternalInterface.HelloServiceApi;
+import com.puvar.cloudserviceapi.domain.UserApi;
+import com.puvar.cloudserviceapi.MqServerExternalInterface.HelloServiceApi;
 import org.springframework.web.bind.common.RequestBody;
 import org.springframework.web.bind.common.RequestParam;
 import org.springframework.web.bind.common.RestController;
