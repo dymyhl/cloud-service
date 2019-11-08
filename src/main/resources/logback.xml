@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="60 seconds">
+    <!-- 控制台设置 -->
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>[%-5level][%date][%thread][%X{logid}]--%msg--[%M][%F{16},%L]%n</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
+    <!--生成日志文件-->
+    <appender name="rollingFile"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${app.log.dir}/${spring.application.name}.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${app.log.dir}/${spring.application.name}.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>[%-5level][%date][%thread][%X{logid}]--%msg--[%M][%F{16},%L]%n</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
+    <!--sql打印日志-->
+    <logger name="com.puvar.cloudservice.mapper" level="DEBUG"></logger>
+
+    <root level="INFO">
+        <appender-ref ref="console"/>
+        <appender-ref ref="rollingFile"/>
+    </root>
+</configuration>

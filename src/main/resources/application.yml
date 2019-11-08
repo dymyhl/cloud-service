@@ -1,0 +1,83 @@
+spring:
+  application:
+    name: hello-MqServerExternalInterface
+  # zipKin地址
+  zipkin:
+    base-url: http://localhost:7777
+  sleuth:
+    sampler:
+      percentage: 1 #zipkin采样率，默认为0.1，改为1后全采样，但是会降低接口调用效率
+  # zipKin默认是http请求  改成mq消息
+  rabbitmq:
+    host: 188.131.251.86
+    port: 5672
+    username: admin
+    password: admin
+  redis:
+    host: localhost
+    password:
+    port: 6379
+    timeout: 1000
+    pool:
+      max-active: 10
+      max-wait: -1
+      min-idle: 0
+      max-idle: 10
+  # es
+  data:
+    elasticsearch:
+      repositories:
+        # 是否开启本地存储
+        enabled: true
+        # java客户端连接地址。9200是http连接端口
+      cluster-nodes: localhost:9300
+  # jpa
+  #jpa:
+  #  hibernate:
+  #    ddl-auto: update  # 第一次建表create  后面用update，要不然每次重启都会新建表
+  #  show-sql: true
+  #  database-platform: org.hibernate.dialect.MySQLDialect
+  # 是否允许覆盖
+  main:
+    allow-bean-definition-overriding: true
+  #jackson统一格式
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+    property-naming-strategy: CAMEL_CASE_TO_LOWER_CASE_WITH_UNDERSCORES
+  # 数据源
+springcloud:
+  spring:
+    datasource:
+      type: com.alibaba.druid.pool.DruidDataSource
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/springcloud?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai
+      username: root
+      password: root
+test:
+  spring:
+    datasource:
+      type: com.alibaba.druid.pool.DruidDataSource
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai
+      username: root
+      password: root
+eureka:
+  client:
+    service-url:
+      defaultZone: http://188.131.251.86:1111/eureka,http://188.131.251.86:2222/eureka
+  # 设置实例id
+  #instance:
+  # instance-id: ${spring.application.name}:${random.int}
+# 设置随机实例id之后，不能设置随机的端口号，访问不到
+server:
+  port: 2000
+# 日志
+app:
+  log:
+    dir: D:/work/ideaWorkSpace
+logging:
+  config: classpath:logback.xml
+# 日志级别
+log:
+  level: INFO

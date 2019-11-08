@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.puvar.cloudservice.dao.test.ManageLogMapper">
+    <resultMap id="BaseResultMap" type="com.puvar.cloudservice.domain.ManageLog">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="log_id" property="logId" jdbcType="VARCHAR"/>
+        <result column="system" property="system" jdbcType="VARCHAR"/>
+        <result column="request_url" property="requestUrl" jdbcType="VARCHAR"/>
+        <result column="request_method" property="requestMethod" jdbcType="VARCHAR"/>
+        <result column="operate_desc" property="operateDesc" jdbcType="VARCHAR"/>
+        <result column="param_value" property="paramValue" jdbcType="VARCHAR"/>
+        <result column="result_value" property="resultValue" jdbcType="VARCHAR"/>
+        <result column="exception_value" property="exceptionValue" jdbcType="VARCHAR"/>
+        <result column="time_length" property="timeLength" jdbcType="INTEGER"/>
+    </resultMap>
+    <sql id="all">
+        id,log_id,system,request_url,request_method,operate_desc,param_value,result_value,exception_value,time_length
+    </sql>
+
+    <select id="findAll" resultMap="BaseResultMap">
+        select
+        <include refid="all"/>
+        from manage_log
+    </select>
+
+
+
+    <insert id="save" useGeneratedKeys="true" parameterType="com.puvar.cloudservice.domain.ManageLog">
+        insert into
+        manage_log(log_id,system,request_url,request_method,operate_desc,param_value,result_value,exception_value,time_length)
+        value (#{logId},#{system},#{requestUrl},#{requestMethod},#{operateDesc},#{paramValue},#{resultValue},#{exceptionValue},#{timeLength})
+    </insert>
+</mapper>

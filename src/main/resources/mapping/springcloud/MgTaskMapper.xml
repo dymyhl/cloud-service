@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.puvar.cloudservice.dao.springcloud.MgTaskMapper">
+  <resultMap id="BaseResultMap" type="com.puvar.cloudservice.domain.MgTask">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="task_id" jdbcType="VARCHAR" property="taskId" />
+    <result column="task_param" jdbcType="VARCHAR" property="taskParam" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, task_id, task_param, create_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from mg_task
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from mg_task
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from mg_task
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.puvar.cloudservice.domain.MgTask" useGeneratedKeys="true">
+    insert into mg_task (task_id, task_param, create_time
+      )
+    values (#{taskId,jdbcType=VARCHAR}, #{taskParam,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.puvar.cloudservice.domain.MgTask" useGeneratedKeys="true">
+    insert into mg_task
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="taskId != null">
+        task_id,
+      </if>
+      <if test="taskParam != null">
+        task_param,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="taskId != null">
+        #{taskId,jdbcType=VARCHAR},
+      </if>
+      <if test="taskParam != null">
+        #{taskParam,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.puvar.cloudservice.domain.MgTask">
+    update mg_task
+    <set>
+      <if test="taskId != null">
+        task_id = #{taskId,jdbcType=VARCHAR},
+      </if>
+      <if test="taskParam != null">
+        task_param = #{taskParam,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.puvar.cloudservice.domain.MgTask">
+    update mg_task
+    set task_id = #{taskId,jdbcType=VARCHAR},
+      task_param = #{taskParam,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
