@@ -1,14 +1,16 @@
 package com.puvar.cloudservice.controller;
 
 import com.puvar.cloudcommon.common.constants.PlainResponse;
+import com.puvar.cloudservice.common.enums.EmailTemplate;
+import com.puvar.cloudservice.common.utils.SendEmailUtils;
+import com.puvar.cloudservice.domain.EmailParam;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.mail.MessagingException;
 
 /***
  * 发送邮件controller
@@ -22,29 +24,22 @@ import org.springframework.web.bind.annotation.RestController;
 public class EmailController {
 
     @Autowired
-    private JavaMailSender mailSender;
-
-    @Value("${spring.mail.username}")
-    private String username;
+    private SendEmailUtils sendEmailUtils;
 
     /**
      * @param email 给指定email发送邮件
      * @return
      */
     @GetMapping("sendEmailToPerson")
-    public PlainResponse sendEmailToPerson(String email) {
-        SimpleMailMessage mailMessage = new SimpleMailMessage();
-        mailMessage.setFrom(username);
-        mailMessage.setTo(email);
-        mailMessage.setSubject("测试邮件");
-        mailMessage.setText("这是一封测试邮件");
-        try {
-            mailSender.send(mailMessage);
-            log.info("sendEmailToPerson is success. to person is {}", email);
-        } catch (Exception e) {
-            log.error("发送简单邮件时发生异常！", e);
-            return PlainResponse.errorResponse();
-        }
+    public PlainResponse sendEmailToPerson(String email) throws MessagingException {
+        EmailParam emailParam = new EmailParam();
+        emailParam.setStuName("丁远猛");
+        emailParam.setItemName("手机");
+        emailParam.setUpdateContent("更新内容");
+        emailParam.setUpdateDate("2019-11-14");
+        emailParam.setUpdatePerson("丁远猛");
+        String[] emails = {email};
+        sendEmailUtils.thymeleafEmail(emails, "springboot测试发送lark", emailParam, EmailTemplate.NOTICETEMPLATE.getTemplateName());
         return PlainResponse.successResponse();
     }
 }

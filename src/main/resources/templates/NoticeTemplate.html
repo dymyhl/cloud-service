@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+<body style="margin: 0;padding: 0;">
+<table align="center" border="1" cellpadding="0" cellspacing="0" width="600px">
+    <tr>
+        <td>
+            <table align="center" border="0" cellpadding="0" cellspacing="0" width="600"
+                   style="border-collapse: collapse;">
+                <tr>
+                    <td bgcolor="#ffffff" style="padding: 0px 30px 20px 30px">
+                        <h4>测试springBoot发送邮件Template模板:</h4>
+                        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                            <tr>
+                                <td colspan="2" style="padding: 0 0 3px 0">变更操作：<span th:text="${emailParam.updateContent}"></span></td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 12px 0 3px 0">产品名称：<span th:text="${emailParam.itemName}"></span></td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 12px 0 3px">学生姓名：<span th:text="${emailParam.stuName}"></span></td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 12px 0 3px">操作人员：<span th:text="${emailParam.updatePerson}"></span></td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 12px 0 3px">操作时间：<span th:text="${emailParam.updateDate}"></span></td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+</body>
+</html>
