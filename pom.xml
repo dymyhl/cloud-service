@@ -119,10 +119,14 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-openfeign</artifactId>
         </dependency>
-
+        <!--email-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-mail</artifactId>
+        </dependency>
         <dependency>
             <groupId>com.puvar</groupId>
-            <artifactId>hello-service-api</artifactId>
+            <artifactId>cloud-service-api</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
         <!-- 使用事务管理器TM所需要添加的坐标 -->

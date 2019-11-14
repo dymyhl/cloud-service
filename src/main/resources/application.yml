@@ -1,6 +1,6 @@
 spring:
   application:
-    name: hello-MqServerExternalInterface
+    name: cloud-service
   # zipKin地址
   zipkin:
     base-url: http://localhost:7777
@@ -45,6 +45,25 @@ spring:
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: GMT+8
     property-naming-strategy: CAMEL_CASE_TO_LOWER_CASE_WITH_UNDERSCORES
+  #email
+  mail:
+    host: smtp.163.com
+    username: m18911212254@163.com
+    password: email316726
+    default-encoding: utf-8
+    port: 465
+    properties:
+      mail:
+        debug: true
+        smtp:
+          auth: true
+          timeout: 25000
+          starttls:
+            enable: true
+            required: true
+          socketFactory:
+            class: javax.net.ssl.SSLSocketFactory
+            fallback: false
   # 数据源
 springcloud:
   spring:
