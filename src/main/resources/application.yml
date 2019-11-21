@@ -14,10 +14,10 @@ spring:
     username: admin
     password: admin
   redis:
-    host: localhost
-    password:
+    host: 188.131.251.86
+    password: 123456
     port: 6379
-    timeout: 1000
+    timeout: 50000
     pool:
       max-active: 10
       max-wait: -1
@@ -103,3 +103,7 @@ logging:
 # 日志级别
 log:
   level: INFO
+
+# 如果通过ip直接调用本服务，不通过网关，是否开启权限验证
+sso:
+  switch: true

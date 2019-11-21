@@ -1,9 +1,8 @@
 package com.puvar.cloudservice.controller;
 
 import com.puvar.cloudcommon.common.constants.PlainResponse;
-import com.puvar.cloudservice.domain.User;
-import com.puvar.cloudservice.service.springcloud.HelloService;
 import com.puvar.cloudservice.service.feign.MqServerInterface;
+import com.puvar.cloudservice.service.springcloud.HelloService;
 import com.puvar.cloudserviceapi.domain.UserApi;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @Slf4j
-public class MqServerController{
+public class MqServerController {
 
     @Autowired
     private MqServerInterface mqServerInterface;
@@ -27,9 +26,7 @@ public class MqServerController{
 
     @GetMapping("lcnTestDB")
     public void lcnTestDB() {
-        User user = new User().setId(1).setName("test").setAge(12);
-        boolean b = helloService.updateUser(user);
-        log.info("hello-service执行数据库结果：{}", b);
+        log.info("hello-service执行数据库结果：{}");
         mqServerInterface.lcnTestDB();
     }
 

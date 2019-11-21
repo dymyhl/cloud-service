@@ -1,7 +1,7 @@
 package com.puvar.cloudservice.controller;
 
 import com.puvar.cloudcommon.common.constants.PlainResponse;
-import com.puvar.cloudservice.domain.User;
+import com.puvar.cloudcommon.domain.ManageUser;
 import com.puvar.cloudservice.service.springcloud.HelloService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -11,7 +11,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 import java.util.Random;
@@ -51,32 +55,15 @@ public class HelloController {
 
     @ApiOperation(value = "复杂hello接口", notes = "say hell")
     @RequestMapping(value = "complexHello", method = RequestMethod.POST)
-    public PlainResponse complexHello(@RequestBody User user) {
+    public PlainResponse complexHello(@RequestBody ManageUser user) {
         log.info("complexHello receive param = " + user.toString());
         return PlainResponse.successDataResponse(user);
-    }
-
-    // 数据库操作
-    @ApiOperation(value = "获取所有用户接口", notes = "user list")
-    @RequestMapping(value = "helloTestList", method = RequestMethod.GET)
-    public PlainResponse helloTestList() {
-        List<User> lists = helloService.helloTestList();
-        return PlainResponse.successDataResponse(lists);
     }
 
     @ApiOperation(value = "获取所有用户接口", notes = "user list")
     @RequestMapping(value = "helloList", method = RequestMethod.GET)
     public PlainResponse helloList() {
-        List<User> lists = helloService.helloList();
+        List<ManageUser> lists = helloService.helloList();
         return PlainResponse.successDataResponse(lists);
-    }
-
-    @ApiOperation(value = "添加用户接口", notes = "add user")
-    @RequestMapping(value = "addUser", method = RequestMethod.GET)
-    public PlainResponse addUser() throws Exception {
-        User user = new User();
-        user.setName("test");
-        user.setAge(11);
-        return PlainResponse.successDataResponse(helloService.addUser(user));
     }
 }

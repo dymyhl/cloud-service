@@ -1,9 +1,9 @@
 package com.puvar.cloudservice.service.springcloud.impl;
 
 import com.puvar.cloudcommon.common.model.HeartBeat;
+import com.puvar.cloudcommon.common.util.DateUtil;
 import com.puvar.cloudservice.common.client.RedisClient;
 import com.puvar.cloudservice.common.constants.MgTaskConstants;
-import com.puvar.cloudservice.common.utils.DateUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.exception.ExceptionUtils;
 import org.springframework.beans.factory.annotation.Autowired;

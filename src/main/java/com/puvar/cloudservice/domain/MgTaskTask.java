@@ -1,7 +1,7 @@
 package com.puvar.cloudservice.domain;
 
 import com.puvar.cloudcommon.common.model.Task;
-import com.puvar.cloudservice.common.utils.DateUtil;
+import com.puvar.cloudcommon.common.util.DateUtil;
 import com.puvar.cloudservice.service.springcloud.impl.MgTaskHandler;
 import com.puvar.cloudservice.service.springcloud.impl.MgTaskHearthBeat;
 import lombok.extern.slf4j.Slf4j;

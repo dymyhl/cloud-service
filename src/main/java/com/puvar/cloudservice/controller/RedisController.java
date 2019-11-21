@@ -1,8 +1,8 @@
 package com.puvar.cloudservice.controller;
 
 import com.puvar.cloudcommon.common.constants.PlainResponse;
+import com.puvar.cloudcommon.domain.ManageUser;
 import com.puvar.cloudservice.common.client.RedisClient;
-import com.puvar.cloudservice.domain.User;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
@@ -27,10 +27,10 @@ public class RedisController {
     @Autowired
     private RedisClient redisClient;
 
-    @ApiOperation(value ="测试redis接口" ,notes = "test redis")
-    @RequestMapping(value = "testRedis",method = RequestMethod.GET)
+    @ApiOperation(value = "测试redis接口", notes = "test redis")
+    @RequestMapping(value = "testRedis", method = RequestMethod.GET)
     public PlainResponse testRedis() {
-        User user = new User().setId(1).setName("dym").setAge(1);
+        ManageUser user = new ManageUser().setUserName("");
         redisClient.setString("dym", user);
         return PlainResponse.successResponse();
     }

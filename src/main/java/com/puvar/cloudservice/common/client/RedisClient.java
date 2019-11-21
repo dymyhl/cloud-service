@@ -1,7 +1,7 @@
 package com.puvar.cloudservice.common.client;
 
 import com.alibaba.fastjson.JSONObject;
-import com.puvar.cloudservice.common.utils.JacksonUtil;
+import com.puvar.cloudcommon.common.util.JacksonUtil;
 import org.apache.commons.collections4.MapUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;

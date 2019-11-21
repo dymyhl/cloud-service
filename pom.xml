@@ -103,6 +103,10 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-redis</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.session</groupId>
+            <artifactId>spring-session-data-redis</artifactId>
+        </dependency>
         <!--es-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -124,7 +128,7 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-mail</artifactId>
         </dependency>
-        <!--thymeleaf-->
+        <!--templates-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
@@ -134,6 +138,7 @@
             <artifactId>cloud-service-api</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
+
         <!-- 使用事务管理器TM所需要添加的坐标 -->
         <!--<dependency>
             <groupId>com.codingapi.txlcn</groupId>
